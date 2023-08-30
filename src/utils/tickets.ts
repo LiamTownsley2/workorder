@@ -38,5 +38,6 @@ export async function hasExistingTicket(guild: Guild, user: User, type: string):
 
 export function isTicket(channel: TextChannel): boolean {
     let ticket_prefixes = ['work_order', 'bug'];
-    return ticket_prefixes.includes(channel.name.split('-')[0]);
+    let parents = [keys.PLUGIN_CATEGORY, keys.BUG_CATEGORY];
+    return ticket_prefixes.includes(channel.name.split('-')[0]) || parents.includes(channel.parentId!);
 }
