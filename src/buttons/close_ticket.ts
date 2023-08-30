@@ -18,6 +18,8 @@ export default button('close_ticket', async ({ client, interaction }) => {
             const freelancerChannel = await client.channels.fetch(keys.PENDING_ORDERS_CHANNEL) as TextChannel;
             await freelancerChannel.messages.delete(ticket.message_id).catch(() => {});
         }        
+    } else {
+        await interaction.channel.delete().catch(() => {});
     }
 
 
